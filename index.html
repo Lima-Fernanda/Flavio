@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ebe6e3">
+  <meta name="description" content="Organize seu orçamento e planeje seus próximos passos financeiros.">
+  <title>Clareza — seu planejamento financeiro</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Clareza, início">
+      <span class="brand-mark" aria-hidden="true">c</span>
+      <span>clareza</span>
+    </a>
+    <span class="privacy-note"><span class="privacy-dot" aria-hidden="true"></span> Seus dados ficam neste dispositivo</span>
+  </header>
+
+  <main class="page-shell">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">PLANEJAMENTO FINANCEIRO PESSOAL</p>
+      <h1 id="page-title">Seu dinheiro,<br><span>com mais direção.</span></h1>
+      <p class="intro-copy">Um retrato simples do seu orçamento para ajudar você a planejar os próximos passos.</p>
+    </section>
+
+    <section class="planner" aria-label="Planejamento financeiro">
+      <form id="finance-form" class="form-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">SEU CENÁRIO</p>
+            <h2>Vamos começar pelo agora</h2>
+          </div>
+          <span class="example-badge">Exemplo fictício</span>
+        </div>
+        <p class="section-hint">Edite os valores para refletir a sua realidade. Valores em reais.</p>
+
+        <fieldset class="form-section">
+          <legend>Renda e despesas</legend>
+          <div class="field-grid">
+            <label class="field">
+              <span>Salário mensal</span>
+              <span class="input-wrap"><span aria-hidden="true">R$</span><input name="salary" type="number" min="0" step="100" value="6500" inputmode="decimal"></span>
+            </label>
+            <label class="field">
+              <span>Custo doméstico mensal</span>
+              <span class="input-wrap"><span aria-hidden="true">R$</span><input name="homeCost" type="number" min="0" step="100" value="1800" inputmode="decimal"></span>
+            </label>
+            <label class="field">
+              <span>Outros custos mensais</span>
+              <span class="input-wrap"><span aria-hidden="true">R$</span><input name="monthlyCost" type="number" min="0" step="100" value="1400" inputmode="decimal"></span>
+            </label>
+            <label class="field">
+              <span>Parcelas de dívidas por mês</span>
+              <span class="input-wrap"><span aria-hidden="true">R$</span><input name="debtPayments" type="number" min="0" step="50" value="450" inputmode="decimal"></span>
+            </label>
+            <label class="field">
+              <span>Despesas essenciais mensais</span>
+              <span class="input-wrap"><span aria-hidden="true">R$</span><input name="essentialCost" type="number" min="0" step="100" value="2500" inputmode="decimal"></span>
+            </label>
+            <label class="field">
+              <span>Custo anual</span>
+              <span class="input-wrap"><span aria-hidden="true">R$</span><input name="annualCost" type="number" min="0" step="500" value="38400" inputmode="decimal"></span>
+            </label>
+            <label class="field">
+              <span>Renda anual</span>
+              <span class="input-wrap"><span aria-hidden="true">R$</span><input name="annualIncome" type="number" min="0" step="1000" value="78000" inputmode="decimal"></span>
+            </label>
+            <label class="field">
+              <span>Reserva financeira atual</span>
+              <span class="input-wrap"><span aria-hidden="true">R$</span><input name="reserve" type="number" min="0" step="500" value="12000" inputmode="decimal"></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <legend>Seu jeito de investir</legend>
+          <div class="field-grid field-grid-bottom">
+            <label class="field">
+              <span>Aportes dos últimos meses</span>
+              <input name="contributions" type="text" value="300, 350, 400, 450, 500, 550" placeholder="Ex.: 300, 350, 400" aria-describedby="contributions-hint">
+              <span class="field-hint" id="contributions-hint">Informe valores mensais em ordem, do mais antigo ao recente.</span>
+            </label>
+            <label class="field">
+              <span>Perfil de risco</span>
+              <select name="riskProfile">
+                <option value="conservador">Conservador</option>
+                <option value="moderado" selected>Moderado</option>
+                <option value="arrojado">Arrojado</option>
+              </select>
+            </label>
+          </div>
+        </fieldset>
+      </form>
+
+      <aside class="results-panel" aria-labelledby="results-title" aria-live="polite">
+        <p class="eyebrow">SEU RESUMO</p>
+        <h2 id="results-title">Um passo de cada vez.</h2>
+        <p class="results-copy">Uma estimativa baseada nos valores que você informou.</p>
+
+        <div class="recommendation-card">
+          <span class="card-label" id="recommendation-label">Próximo passo sugerido</span>
+          <strong class="recommendation-value" id="monthly-recommendation">R$ 0</strong>
+          <span class="recommendation-caption" id="recommendation-caption">por mês para fortalecer sua reserva</span>
+        </div>
+
+        <div class="metric-list">
+          <div class="metric-row">
+            <span>Saldo mensal estimado</span>
+            <strong id="monthly-balance">R$ 0</strong>
+          </div>
+          <div class="metric-row">
+            <span>Reserva recomendada <span class="subtle">(6 meses essenciais)</span></span>
+            <strong id="reserve-target">R$ 0</strong>
+          </div>
+          <div class="metric-row">
+            <span>Saldo anual estimado</span>
+            <strong id="annual-balance">R$ 0</strong>
+          </div>
+          <div class="metric-row">
+            <span>Próximo aporte projetado</span>
+            <strong id="contribution-forecast">—</strong>
+          </div>
+        </div>
+
+        <p class="risk-note" id="risk-note">Seu perfil ajuda a contextualizar o planejamento; não determina sozinho uma carteira.</p>
+      </aside>
+    </section>
+
+    <section class="market-section" aria-labelledby="market-title">
+      <div class="market-heading">
+        <div>
+          <p class="eyebrow">ACOMPANHAMENTO DE MERCADO</p>
+          <h2 id="market-title">Pesquise antes de decidir.</h2>
+        </div>
+        <span class="status-badge"><span aria-hidden="true"></span> Pesquisa diária não conectada</span>
+      </div>
+      <div class="market-card">
+        <span class="market-icon" aria-hidden="true">↗</span>
+        <div>
+          <h3>Radar de setores</h3>
+          <p>As áreas de investimento e as condições de mercado não são consultadas em tempo real nesta versão. Conecte uma fonte de dados confiável para receber atualizações diárias — sem isso, qualquer indicação de setor seria apenas ilustrativa.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="disclaimer">
+      <span class="disclaimer-icon" aria-hidden="true">i</span>
+      <p>Estimativas educativas, não são recomendação financeira ou de investimento. O cálculo usa 20% do saldo mensal como referência para o próximo passo e projeta aportes por regressão linear simples. Avalie seus objetivos e, se necessário, procure um profissional habilitado.</p>
+    </footer>
+  </main>
+</body>
+</html>
